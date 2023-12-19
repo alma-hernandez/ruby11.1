@@ -1,7 +1,7 @@
 class Session < ApplicationRecord
   belongs_to :user
 
-  before_validation :generate_sessions_token
+  before_validation :generate_session_token
 
   private
 
