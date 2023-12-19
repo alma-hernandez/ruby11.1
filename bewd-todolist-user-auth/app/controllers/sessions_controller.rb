@@ -2,21 +2,12 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:user][:username])
 
-<<<<<<< HEAD
-      if @user and BCrypt::Password.new(@user.password) == params[:user][:password]
-        session = @user.sessions.create
-        cookies.permanent.signed[:todolist_session_token] = {
-          value: session.token,
-          httponly: true
-        }
-=======
     if @user and @user.password == params[:user][:password]
       session = @user.sessions.create
       cookies.permanent.signed[:todolist_session_token] = {
         value: session.token,
         httponly: true
       }
->>>>>>> cbb41e54ea8bb7bce573d7e200cf5ab030bec996
 
       render json: {
         success: true
